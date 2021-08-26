@@ -5,10 +5,14 @@ class Comment extends Model {
     super.init({
       text: DataTypes.STRING,
       dateTime: DataTypes.DATE,
-      postId: DataTypes.INTEGER
+      post_id: DataTypes.INTEGER
     },{
         sequelize
     });
+  }
+
+  static associate(models){
+    this.belongsTo(models.Post, { foreignKey: 'post_id', as: 'post'})
   }
 }
 

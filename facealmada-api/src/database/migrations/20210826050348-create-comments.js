@@ -17,9 +17,15 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
       },
-      postId:{
+      post_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: "posts",
+          key: "id",
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       created_at: {
         type: Sequelize.DATE,

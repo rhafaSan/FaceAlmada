@@ -5,10 +5,14 @@ class Post extends Model {
     super.init({
       text: DataTypes.STRING,
       dateTime: DataTypes.DATE,
-      userId: DataTypes.INTEGER
+      user_id: DataTypes.INTEGER
     },{
         sequelize
     });
+  }
+
+  static associate(models){
+    this.belongsTo(models.User, { foreignKey: 'user_id', as: 'user'})
   }
 }
 
