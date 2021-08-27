@@ -2,8 +2,9 @@ const Comment = require("../models/Comment");
 
 module.exports = {
   async post(req, res) {
-    const { text, dateTime, postId } = req.body;
-    const comment = await Comment.create({ text, dateTime, postId });
+    const { text, post_id } = req.body;
+    const date_comment = new Date();
+    const comment = await Comment.create({ text, date_comment, post_id });
     return res.json(comment);
   },
 

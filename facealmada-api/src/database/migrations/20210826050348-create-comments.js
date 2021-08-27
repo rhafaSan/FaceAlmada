@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      dateTime: {
+      date_comment: {
         type: Sequelize.DATE,
         allowNull: false,
       },

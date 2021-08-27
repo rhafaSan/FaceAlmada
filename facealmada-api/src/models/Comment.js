@@ -4,7 +4,7 @@ class Comment extends Model {
   static init(sequelize) {
     super.init({
       text: DataTypes.STRING,
-      dateTime: DataTypes.DATE,
+      date_comment: DataTypes.DATE,
       post_id: DataTypes.INTEGER
     },{
         sequelize
