@@ -9,12 +9,13 @@
         <div v-for="post of posts" :key="post.id" @click="selectPost(post.id)" >
           <div class="card-post">
             <span>{{post.text}}</span>
-          </div>
               <div v-for="comment of comentarios" :key="comment.id">
-              
-                  <span>{{ comment.text }}</span>
-                
+                <div v-if="comment.post_id === post.id">
+                  <p>{{ comment.text }}</p>
+                </div>
             </div>
+            <p>{{ post.date_post }}</p>
+          </div>
         </div>
       </section>
     </main>
@@ -73,6 +74,22 @@ header{
 
 .links:hover{
   color: #5d1fcf;
+}
+
+section{
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+  margin-left: auto;
+  width: 80%;
+}
+
+.card-post{
+  border: 1px solid #000;
+}
+
+.card-post span{
+  background-color: #9998;
 }
 
 </style>

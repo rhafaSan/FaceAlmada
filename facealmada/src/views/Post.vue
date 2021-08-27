@@ -61,5 +61,12 @@ export default {
 </script>
 
 <style>
-
+header{
+  height: 50px;
+  background-color: #771db3;
+  text-align: center;
+  color: #fff;
+  font-size: 1.4rem;
+  padding: 1%;
+}
 </style>
