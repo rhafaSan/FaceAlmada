@@ -4,9 +4,9 @@
 <header>FaceAlmada</header>
   <main>
       <div>
-        <form action="" @submit="submeter" >
+        <form action="" @submit="criarPost" >
           <p>O que você está pensando? </p>
-          <textarea name="" id="" cols="30" rows="10"></textarea>
+          <textarea cols="30" rows="10" v-model="this.text"></textarea>
           <button type="submit">Enviar</button>
         </form>    
       </div>
@@ -16,18 +16,33 @@
 </template>
 
 <script>
+import api from '@/services/api';
+
 export default {
   name: 'CriarPost',
    data(){
     return{
-      corpo: '',
-      dataHora: new Date(),
+      text: '',
+      userId: localStorage.getItem('logged')
     }
   },
   methods: {
-    submeter(e){
+    criarPost(e){
       e.preventDefault();
-      console.log(this.dataHora);
+      this.submeter();
+    },
+    async submeter(){
+      const data = {
+        text: this.text,
+        user_id: this.userId
+      }
+      try{
+        const res = await api.post('/posts/', data);
+        console.log(res.data);
+      }catch(e){
+        alert(e.error.response);
+      }
+
     }
   }
 }
